@@ -8,8 +8,8 @@ function NewProductForm(props){
       <form onSubmit={handleNewProductFormSubmission}>
         <input
           type='text'
-          name='names'
-          placeholder='Pair Names' />
+          name='name'
+          placeholder='name' />
         <input
           type='text'
           name='origin'
