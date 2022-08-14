@@ -6,23 +6,23 @@ function Product(props){
   return (
     <React.Fragment>
       <div onClick = {() => props.whenProductClicked(props.id)}>
-        { /* We add a div with an onClick function. Don't forget to close out the div below! */}
-        <h3>{props.location} - {props.names}</h3>
-        <p><em>{props.issue}</em></p>
+        <h3>{props.name}</h3>
+        <h3>{props.origin}</h3>
+        <h3>{props.price}</h3>
+        <h3>{props.roast}</h3>
         <hr/>
       </div>
     </React.Fragment>
   );
 }
 
-Ticket.propTypes = {
+Product.propTypes = {
   name: PropTypes.string,
   origin: PropTypes.string,
-  issue: PropTypes.string,
-  price: PropTypes.integer,
+  price: PropTypes.string,
   roast: PropTypes.string,
-  id: PropTypes.string, // new PropType
-  whenTicketClicked: PropTypes.func // new PropType
+  id: PropTypes.string, 
+  whenProductClicked: PropTypes.func 
 };
 
 export default Product;
