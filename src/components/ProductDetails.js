@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types'
 
-function InventoryDetails(props){
+function ProductDetails(props){
   const { product, onClickingDelete } = props;
   return (
     <React.Fragment>
@@ -19,10 +19,10 @@ function InventoryDetails(props){
   );
 }
 
-InventoryDetails.propTypes = {
+ProductDetails.propTypes = {
   product: PropTypes.object,
   onClickingDelete: PropTypes.func,
   onClickingEdit: PropTypes.func,
   onClickingRestock: PropTypes.func,
 }
-export default InventoryDetails;
+export default ProductDetails;
