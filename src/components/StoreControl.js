@@ -4,15 +4,32 @@ import InventoryList from './InventoryList';
 import InventoryDetails from './InventoryDetails';
 
 class StoreControl extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainInventoryList: []
+      mainInventoryList: [],
+      selectedProduct: null,
+      editing: false
     };
     this.handleClick = this.handleClick.bind(this); 
   }
 
+  handleClick = () => {
+    if (this.state.selectedProduct != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedProduct: null,
+        editing: false
+      });
+    } else {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage,
+    }));
+    }
+  }
+  
   handleChangingSelectedProduct = (id) => {
     const selectedProduct = this.state.mainInventoryList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
@@ -26,11 +43,6 @@ class StoreControl extends React.Component {
     });
   }
   
-  handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
-  }
   handleRestockClick = (id) => {
     const selectedItem = this.state.mainInventoryList.filter((product) => product.id === id)[0]
     selectedItem.quantity += 130;
@@ -49,7 +61,7 @@ class StoreControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null; 
 
-    if (this.state.selectedTicket != null) {
+    if (this.state.selectedProduct != null) {
       currentlyVisibleState = <InventoryDetails product = {this.state.selectedProduct} />
       buttonText = "Return to Product List";
       
