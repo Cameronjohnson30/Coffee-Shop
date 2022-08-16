@@ -1,7 +1,7 @@
 import React from 'react';
 import NewProductForm from './NewProductForm';
-import InventoryList from './InventoryList';
-import InventoryDetails from './InventoryDetails';
+import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
 
 class StoreControl extends React.Component {
 
@@ -9,7 +9,7 @@ class StoreControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainInventoryList: [],
+      mainProductList: [],
       selectedProduct: null,
       editing: false
     };
@@ -29,29 +29,29 @@ class StoreControl extends React.Component {
     }));
     }
   }
-  
+
   handleChangingSelectedProduct = (id) => {
-    const selectedProduct = this.state.mainInventoryList.filter(product => product.id === id)[0];
+    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
   }
 
   handleAddingNewProductToList = (newProduct) => {
-    const newMainInventoryList = this.state.mainInventoryList.concat(newProduct);
+    const newMainProductList = this.state.mainProductList.concat(newProduct);
     this.setState({
-      mainProductList: newMainInventoryList,
+      mainProductList: newMainProductList,
       formVisibleOnPage: false
     });
   }
   
   handleRestockClick = (id) => {
-    const selectedItem = this.state.mainInventoryList.filter((product) => product.id === id)[0]
+    const selectedItem = this.state.mainProductList.filter((product) => product.id === id)[0]
     selectedItem.quantity += 130;
-    const editedMainInventoryList = this.state.mainInventoryList.filter(
+    const editedMainInventoryList = this.state.mainProductList.filter(
       (product) => product.id !== id) 
       .concat(selectedItem);
 
     this.setState({
-      mainInventoryList: editedMainInventoryList,
+      mainProductList: editedMainInventoryList,
       editing: false,
       selectedProduct: null,
     })
@@ -60,9 +60,8 @@ class StoreControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null; 
-
     if (this.state.selectedProduct != null) {
-      currentlyVisibleState = <InventoryDetails product = {this.state.selectedProduct} />
+      currentlyVisibleState = <ProductDetails product = {this.state.selectedProduct} />
       buttonText = "Return to Product List";
       
     }
@@ -70,7 +69,7 @@ class StoreControl extends React.Component {
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}  />;
       buttonText = "Return to Product List";
     } else {
-      currentlyVisibleState = <InventoryList inventoryList={this.state.mainInventoryList} onProductSelection={this.handleChangingSelectedProduct} />;
+      currentlyVisibleState = <ProductList productList={this.state.mainProductList} onProductSelection={this.handleChangingSelectedProduct} />;
       buttonText = "Add Product";
     }  return (
     <React.Fragment>
