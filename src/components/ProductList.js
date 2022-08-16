@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 
 
 
-function InventoryList(props){
+function ProductList(props){
 
   return (
     <React.Fragment>
       <hr/>
-      {props.productList.map((product) =>
+      {props.ProductList.map((product) =>
         <Product
           whenProductClicked = { props.onProductSelection }
           name={product.name}
@@ -24,9 +24,9 @@ function InventoryList(props){
   );
 }
 
-InventoryList.propTypes = {
-  productList: PropTypes.array,
+ProductList.propTypes = {
+  InventoryList: PropTypes.array,
   onProductSelection: PropTypes.func
 };
 
-export default InventoryList;
+export default ProductList;
