@@ -5,11 +5,9 @@ import PropTypes from "prop-types";
 
 
 function ProductList(props){
-
   return (
     <React.Fragment>
-      <hr/>
-      {props.ProductList.map((product) =>
+      {props.productList.map((product) =>
         <Product
           whenProductClicked = { props.onProductSelection }
           name={product.name}
@@ -25,7 +23,7 @@ function ProductList(props){
 }
 
 ProductList.propTypes = {
-  InventoryList: PropTypes.array,
+  ProductList: PropTypes.array,
   onProductSelection: PropTypes.func
 };
 
