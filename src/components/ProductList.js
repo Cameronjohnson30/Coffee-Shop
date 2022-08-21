@@ -2,8 +2,6 @@ import React from "react";
 import Product from "./Product";
 import PropTypes from "prop-types";
 
-
-
 function ProductList(props){
   return (
     <React.Fragment>
@@ -11,10 +9,6 @@ function ProductList(props){
         <Product
           whenProductClicked = { props.onProductSelection }
           name={product.name}
-          origin={product.origin}
-          price={product.price}
-          roast= {product.roast}
-          quantity= {product.quantity}
           id={product.id}
           key={product.id}/>
       )}
