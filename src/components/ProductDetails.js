@@ -10,7 +10,7 @@ function ProductDetails(props){
       <h2> ORIGIN:{product.origin}</h2>
       <h3> PRICE:{product.price}$</h3>
       <h3> ROAST:{product.roast}</h3>
-      <h1>Availability: {""}
+      <h1>Stock: {""}
       {product.quantity > 0 ? product.quantity + " lbs" : "Out of Stock"}
       </h1>
       <button onClick={()=> onPurchasingProduct(product.id)}>Purchase</button>
