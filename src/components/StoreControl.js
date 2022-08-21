@@ -2,7 +2,7 @@ import React from 'react';
 import NewProductForm from './NewProductForm';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
-
+import EditProductForm from './EditProductForm'
 class StoreControl extends React.Component {
 
   constructor(props) {
@@ -13,7 +13,6 @@ class StoreControl extends React.Component {
       selectedProduct: null,
       editing: false
     };
-    this.handleClick = this.handleClick.bind(this); 
   }
 
   handleClick = () => {
@@ -42,43 +41,73 @@ class StoreControl extends React.Component {
       formVisibleOnPage: false
     });
   }
-  
-  handleRestockClick = (id) => {
-    const selectedItem = this.state.mainProductList.filter((product) => product.id === id)[0]
-    selectedItem.quantity += 130;
-    const editedMainInventoryList = this.state.mainProductList.filter(
-      (product) => product.id !== id) 
-      .concat(selectedItem);
-
+  handleDeletingProduct = (id) => {
+    const newMainProductList = this.state.mainProductList.filter((product) => product.id !== id);
     this.setState({
-      mainProductList: editedMainInventoryList,
-      editing: false,
+      mainProductList: newMainProductList,
       selectedProduct: null,
-    })
+    });
+  };
+
+  handleEditClick = () => {
+    this.setState({ editing: true });
+  };
+
+  handleEditingProductInList = (productToEdit) => {
+    const editedMainProductList = this.state.mainProductList.filter((product) => product.id !== this.state.selectedProduct.id).concat(productToEdit);
+    this.setState({
+      mainProductList: editedMainProductList,
+      editing: false,
+      selectedProduct: null
+    });
+  }
+  handlePurchasingProduct = () => {
+    const editedMainProductList = this.state.mainProductList.filter((product) => (product.quantity -= 1));
+    this.setState({
+      mainProductList: editedMainProductList,
+      editing: false,
+    });
   }
 
   render(){
     let currentlyVisibleState = null;
     let buttonText = null; 
-    if (this.state.selectedProduct != null) {
-      currentlyVisibleState = <ProductDetails product = {this.state.selectedProduct} />
-      buttonText = "Return to Product List";
-      
-    }
-    else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}  />;
-      buttonText = "Return to Product List";
+    
+    if (this.state.editing) {
+      currentlyVisibleState = 
+        <EditProductForm
+          product = {this.state.selectedProduct} 
+          onEditProduct = {this.handleEditingProductInList} />
+          buttonText = "Return to Product List";
+    } else if (this.state.selectedProduct != null) {
+      currentlyVisibleState = 
+        <ProductDetails 
+          product = {this.state.selectedProduct} 
+          onClickingDelete={this.handleDeletingProduct} 
+          onClickingEdit={this.handleEditClick}
+          onPurchasingProduct ={this.handlePurchasingProduct}
+          />
+          buttonText = "Return to Product List";
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = 
+        <NewProductForm 
+          onNewProductCreation={this.handleAddingNewProductToList} />;
+          buttonText = "Return to Product List";
     } else {
-      currentlyVisibleState = <ProductList productList={this.state.mainProductList} onProductSelection={this.handleChangingSelectedProduct} />;
-      buttonText = "Add Product";
-    }  return (
-    <React.Fragment>
-      {currentlyVisibleState}
-      <br />
-      <button onClick={this.handleClick}>{buttonText}</button>
-    </React.Fragment>
-  );
+      currentlyVisibleState = 
+        <ProductList 
+          productList={this.state.mainProductList} 
+          onProductSelection={this.handleChangingSelectedProduct} />
+          buttonText='Add Product';
+    }
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
   }
 }
+
 
 export default StoreControl;
