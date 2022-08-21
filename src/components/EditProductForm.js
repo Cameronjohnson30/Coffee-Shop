@@ -12,7 +12,8 @@ function handleEditProductFormSubmission(event) {
     origin: event.target.origin.value, 
     price: parseInt(event.target.price.value),  
     roast: event.target.roast.value,
-    id: product.id
+    id: product.id,
+    quantity: product.quantity
   });
 }
 
