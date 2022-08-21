@@ -1,42 +1,31 @@
 import React from "react";
 import { v4 } from 'uuid';
 import PropTypes from "prop-types";
+import ReusableForm from './ReusableForm';
 
 function NewProductForm(props){
-  return (
-    <React.Fragment>
-      <form onSubmit={handleNewProductFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='name' />
-        <input
-          type='text'
-          name='origin'
-          placeholder='origin' />
-        <input
-          type='text'
-          name='price'
-          placeholder='price' />
-        <input
-          type='text'
-          name='roast'
-          placeholder='roast' />
-        <button type='submit'>Add Product</button>
-      </form>
-    </React.Fragment>
-  );
-  function handleNewProductFormSubmission(event) {
+
+function handleNewProductFormSubmission(event) {
   event.preventDefault();
   props.onNewProductCreation({
-    names: event.target.names.value, 
+    name: event.target.name.value, 
     origin: event.target.origin.value, 
-    price: event.target.price.value, 
+    price: parseInt(event.target.price.value), 
     roast: event.target.roast.value,
+    quantity: parseInt(130),
     id: v4()
   });
 }
+
+  return (
+    <React.Fragment>
+      <ReusableForm
+      formSubmissionHandler={handleNewProductFormSubmission}
+      buttonText="Add Coffee Bag" />
+    </React.Fragment>
+  );
 }
+
 NewProductForm.propTypes = {
   onNewProductCreation: PropTypes.func
 };
