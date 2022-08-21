@@ -8,6 +8,7 @@
 * _Javascript_
 * _HTML_
 * _Markdown_
+* _CSS_
 
 ## Description
 * An application to track the inventory of a coffee shop, it was constructed with the guidance of Epicodus.
@@ -27,7 +28,7 @@
 * _Start Server:_ npm run start
 
 ##### The application should launch in your browser and if not
-* _Open your browser and navigate to:_http://localhost:3000/
+* Open your browser and go to http://localhost:3000/
 
 ## Known Bugs
 * _There are no known bugs at this time_
