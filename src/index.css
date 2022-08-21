@@ -13,3 +13,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h3 {
+  font-size: xx-large;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
