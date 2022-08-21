@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 function Product(props){
   return (
     <React.Fragment>
@@ -10,7 +9,7 @@ function Product(props){
         <h3>{props.origin}</h3>
         <h3>{props.price}</h3>
         <h3>{props.roast}</h3>
-        <hr/>
+        <h3>{props.quantity}</h3>
       </div>
     </React.Fragment>
   );
@@ -21,7 +20,8 @@ Product.propTypes = {
   origin: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   roast: PropTypes.string.isRequired,
-  id: PropTypes.string, 
+  id: PropTypes.string,
+  quantity: PropTypes.number, 
   whenProductClicked: PropTypes.func 
 };
 
