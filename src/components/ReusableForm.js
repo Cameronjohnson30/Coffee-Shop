@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -22,7 +21,7 @@ function ReusableForm(props) {
           type='text'
           name='roast'
           placeholder='roast' />
-        <button type='submit'>Add Product</button>
+        <button type='submit'>Submit</button>
       </form>
     </React.Fragment>
   )
