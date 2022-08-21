@@ -6,10 +6,10 @@ function ProductDetails(props){
   return (
     <React.Fragment>
       <h1>Iventory Details</h1>
-      <h2> {product.name}</h2>
-      <h2> {product.origin}</h2>
-      <h3> {product.price}</h3>
-      <h3> {product.roast}</h3>
+      <h2> NAME:{product.name}</h2>
+      <h2> ORIGIN:{product.origin}</h2>
+      <h3> PRICE:{product.price}$</h3>
+      <h3> ROAST:{product.roast}</h3>
       <h1>Availability: {""}
       {product.quantity > 0 ? product.quantity + " lbs" : "Out of Stock"}
       </h1>
