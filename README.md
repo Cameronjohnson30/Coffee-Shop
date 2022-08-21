@@ -12,10 +12,10 @@
 ## Description
 * An application to track the inventory of a coffee shop, it was constructed with the guidance of Epicodus.
 
-![AppDiagram](src/img/Coffee.drawio.png)
+![AppDiagram](src/img/CoffeeDiagram.drawio.png)
 
 ## Setup/Installation
-* _Go to [https://github.com/Cameronjohnson30/Coffee-Shop.git]_
+* _Go to https://github.com/Cameronjohnson30/Coffee-Shop.git_
 * _Clone this repository to your local machine by running the following command_
 * _git clone https://github.com/Cameronjohnson30/Coffee-Shop.git_
 * _Navigate to root folder and open directory in your terminal_
