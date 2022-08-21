@@ -16,7 +16,6 @@ function handleNewProductFormSubmission(event) {
     id: v4()
   });
 }
-
   return (
     <React.Fragment>
       <ReusableForm
@@ -29,6 +28,5 @@ function handleNewProductFormSubmission(event) {
 NewProductForm.propTypes = {
   onNewProductCreation: PropTypes.func
 };
-
 
 export default NewProductForm;
