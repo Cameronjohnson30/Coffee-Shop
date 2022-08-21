@@ -3,8 +3,8 @@ import NewProductForm from './NewProductForm';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import EditProductForm from './EditProductForm'
-class StoreControl extends React.Component {
 
+class StoreControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +72,6 @@ class StoreControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null; 
-    
     if (this.state.editing) {
       currentlyVisibleState = 
         <EditProductForm
@@ -85,13 +84,12 @@ class StoreControl extends React.Component {
           product = {this.state.selectedProduct} 
           onClickingDelete={this.handleDeletingProduct} 
           onClickingEdit={this.handleEditClick}
-          onPurchasingProduct ={this.handlePurchasingProduct}
-          />
+          onPurchasingProduct ={this.handlePurchasingProduct} />
           buttonText = "Return to Product List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = 
         <NewProductForm 
-          onNewProductCreation={this.handleAddingNewProductToList} />;
+          onNewProductCreation={this.handleAddingNewProductToList} />
           buttonText = "Return to Product List";
     } else {
       currentlyVisibleState = 
@@ -108,6 +106,5 @@ class StoreControl extends React.Component {
     );
   }
 }
-
 
 export default StoreControl;
