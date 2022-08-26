@@ -16,10 +16,10 @@ function Product(props){
 }
 
 Product.propTypes = {
-  name: PropTypes.string.isRequired,
-  origin: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  roast: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  origin: PropTypes.string,
+  price: PropTypes.number,
+  roast: PropTypes.string,
   id: PropTypes.string,
   quantity: PropTypes.number, 
   whenProductClicked: PropTypes.func 
