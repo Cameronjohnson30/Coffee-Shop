@@ -30,7 +30,7 @@ class StoreControl extends React.Component {
   }
 
   handleChangingSelectedProduct = (id) => {
-    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
+    const selectedProduct = this.state.mainProductList.filter((product) => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
   }
 
@@ -61,13 +61,14 @@ class StoreControl extends React.Component {
       selectedProduct: null
     });
   }
-  handlePurchasingProduct = () => {
-    const editedMainProductList = this.state.mainProductList.filter((product) => (product.quantity -= 1));
+  handlePurchasingProduct = (id) => {
+    const selectedProduct = this.state.mainProductList.filter((product) => product.id === id)[0]; selectedProduct.quantity -= 1;
+    const editedMainProductList = this.state.mainProductList.filter((product) => product.id !== id).concat(selectedProduct);
     this.setState({
       mainProductList: editedMainProductList,
       editing: false,
     });
-  }
+  };
 
   render(){
     let currentlyVisibleState = null;
